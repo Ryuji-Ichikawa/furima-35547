@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type   | Options                 |
-| ------------------ | ------ | ----------------------- |
-| nickname           | string | null: false             |
-| email              | string | null: false, null: false|
-| encrypted_password | string | null: false             |
-| last_name          | string | null: false             |
-| first_name         | string | null: false             |
-| last_name_kana     | string | null: false             |
-| first_name_kana    | string | null: false             |
-| birthday           | date   | null: false             |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 
@@ -22,9 +22,9 @@
 
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
-| item_name             | string     | null: false                    |
-| item_info             | text       | null: false                    |
-| item_price            | integer    | null: false                    |
+| name                  | string     | null: false                    |
+| info                  | text       | null: false                    |
+| price                 | integer    | null: false                    |
 | category_id           | integer    | null: false                    |
 | status_id             | integer    | null: false                    |
 | shipping_fee_id       | integer    | null: false                    |
@@ -59,7 +59,7 @@
 | addresses     | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
-| prefecture_id | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | purchase      | references | null: false, foreign_key: true |
 
 ### Association
