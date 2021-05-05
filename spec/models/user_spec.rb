@@ -73,7 +73,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include 'Email is invalid'
       end
-      it 'password:半角英数混合(半角英語のみ)' do
+      it 'passwordが半角英字だけでは登録できないこと' do
         @user.password = 'aaaaaaa'
         @user.password_confirmation = @user.password
         @user.valid?
@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include 'Password Include both letters and numbers'
       end
-      it 'passwordが全角英数混合では登録できないこと(' do
+      it 'passwordが全角英数混合では登録できないこと' do
         @user.password = 'ａａａ１１１'
         @user.password_confirmation = @user.password
         @user.valid?
