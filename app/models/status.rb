@@ -8,5 +8,5 @@ class Status < ActiveHash::Base
     { id: 6, data: '傷や汚れあり' },
   ]
   include ActiveHash::Associations
-  has_many :articles
+  has_many :items
   end
