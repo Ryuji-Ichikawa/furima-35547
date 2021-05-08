@@ -44,7 +44,7 @@ RSpec.describe Item, type: :model do
       it 'category_idが0(初期値)だと保存できないこと' do
         @item.category_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Category is invalid"
+        expect(@item.errors.full_messages).to include 'Category is invalid'
       end
       it 'status_idが空だと保存できないこと' do
         @item.status_id = ''
@@ -54,7 +54,7 @@ RSpec.describe Item, type: :model do
       it 'status_idが0(初期値)だと保存できないこと' do
         @item.status_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Status is invalid"
+        expect(@item.errors.full_messages).to include 'Status is invalid'
       end
       it 'shipping_fee_idが空だと保存できないこと' do
         @item.shipping_fee_id = ''
@@ -64,7 +64,7 @@ RSpec.describe Item, type: :model do
       it 'shipping_fee_idが0(初期値)だと保存できないこと' do
         @item.shipping_fee_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Shipping fee is invalid"
+        expect(@item.errors.full_messages).to include 'Shipping fee is invalid'
       end
       it 'prefecture_idが空だと保存できないこと' do
         @item.prefecture_id = ''
@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       it 'prefecture_idが0(初期値)だと保存できないこと' do
         @item.prefecture_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Prefecture is invalid"
+        expect(@item.errors.full_messages).to include 'Prefecture is invalid'
       end
       it 'scheduled_delivery_idが空だと保存できないこと' do
         @item.scheduled_delivery_id = ''
@@ -84,7 +84,7 @@ RSpec.describe Item, type: :model do
       it 'scheduled_delivery_idが0(初期値)だと保存できないこと' do
         @item.scheduled_delivery_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Scheduled delivery is invalid"
+        expect(@item.errors.full_messages).to include 'Scheduled delivery is invalid'
       end
       it 'priceが空だと保存できないこと' do
         @item.price = ''
@@ -94,17 +94,17 @@ RSpec.describe Item, type: :model do
       it 'priceが299以下では登録できないこと' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is invalid"
+        expect(@item.errors.full_messages).to include 'Price is invalid'
       end
       it 'priceが10,000,000以上では登録できないこと' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is invalid"
+        expect(@item.errors.full_messages).to include 'Price is invalid'
       end
       it 'priceが全角数字では登録できないこと' do
         @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is invalid"
+        expect(@item.errors.full_messages).to include 'Price is invalid'
       end
       it 'ユーザーが紐付いていなければ登録できないこと' do
         @item.user = nil

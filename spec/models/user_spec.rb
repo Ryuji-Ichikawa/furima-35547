@@ -101,22 +101,22 @@ RSpec.describe User, type: :model do
       it '苗字が漢字・平仮名・カタカナ以外では登録できないこと' do
         @user.last_name = 'taro'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name is invalid"
+        expect(@user.errors.full_messages).to include 'Last name is invalid'
       end
       it '氏名が漢字・平仮名・カタカナ以外では登録できないこと' do
         @user.first_name = 'yamada'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name is invalid"
+        expect(@user.errors.full_messages).to include 'First name is invalid'
       end
       it '苗字カナが全角カタカナ以外では登録できないこと' do
         @user.last_name_kana = '太ro'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name kana is invalid"
+        expect(@user.errors.full_messages).to include 'Last name kana is invalid'
       end
       it '氏名カナが全角カタカナ以外では登録できないこと' do
         @user.first_name_kana = '山da'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name kana is invalid"
+        expect(@user.errors.full_messages).to include 'First name kana is invalid'
       end
     end
   end
