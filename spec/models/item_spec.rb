@@ -12,11 +12,11 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it 'priceが300以上であれば登録できる' do
-        @item.price = '300'
+        @item.price = 300
         expect(@item).to be_valid
       end
       it 'priceが9,999,999以下であれば登録できる' do
-        @item.price = '9999999'
+        @item.price = 9999999
         expect(@item).to be_valid
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end
       it 'category_idが0(初期値)だと保存できないこと' do
-        @item.category_id = '0'
+        @item.category_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include 'Category is invalid'
       end
@@ -52,7 +52,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Status can't be blank"
       end
       it 'status_idが0(初期値)だと保存できないこと' do
-        @item.status_id = '0'
+        @item.status_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include 'Status is invalid'
       end
@@ -62,7 +62,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Shipping fee can't be blank"
       end
       it 'shipping_fee_idが0(初期値)だと保存できないこと' do
-        @item.shipping_fee_id = '0'
+        @item.shipping_fee_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include 'Shipping fee is invalid'
       end
@@ -72,7 +72,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Prefecture can't be blank"
       end
       it 'prefecture_idが0(初期値)だと保存できないこと' do
-        @item.prefecture_id = '0'
+        @item.prefecture_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include 'Prefecture is invalid'
       end
@@ -82,7 +82,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Scheduled delivery can't be blank"
       end
       it 'scheduled_delivery_idが0(初期値)だと保存できないこと' do
-        @item.scheduled_delivery_id = '0'
+        @item.scheduled_delivery_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include 'Scheduled delivery is invalid'
       end
@@ -92,12 +92,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Price can't be blank"
       end
       it 'priceが299以下では登録できないこと' do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price is invalid'
       end
       it 'priceが10,000,000以上では登録できないこと' do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price is invalid'
       end
