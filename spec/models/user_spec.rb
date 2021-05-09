@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context '新規登録できるとき' do
-      it 'nicknameとemail、passwordとpassword_confirmation、last_nameとfirst_name、last_name_kanaとfirst_name_kana、birthdayが存在すれば登録できる' do
+      it '全項目が存在すれば登録できる' do
         expect(@user).to be_valid
       end
       it 'passwordとpassword_confirmationが6文字以上であれば登録できる' do
@@ -101,22 +101,22 @@ RSpec.describe User, type: :model do
       it '苗字が漢字・平仮名・カタカナ以外では登録できないこと' do
         @user.last_name = 'taro'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name is invalid"
+        expect(@user.errors.full_messages).to include 'Last name is invalid'
       end
       it '氏名が漢字・平仮名・カタカナ以外では登録できないこと' do
         @user.first_name = 'yamada'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name is invalid"
+        expect(@user.errors.full_messages).to include 'First name is invalid'
       end
       it '苗字カナが全角カタカナ以外では登録できないこと' do
         @user.last_name_kana = '太ro'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name kana is invalid"
+        expect(@user.errors.full_messages).to include 'Last name kana is invalid'
       end
       it '氏名カナが全角カタカナ以外では登録できないこと' do
         @user.first_name_kana = '山da'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name kana is invalid"
+        expect(@user.errors.full_messages).to include 'First name kana is invalid'
       end
     end
   end
