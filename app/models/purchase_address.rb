@@ -10,5 +10,8 @@ class PurchaseAddress
   end
   validates :prefecture_id, numericality: {other_than: 0, message: "is invalid"}
 
-  
+  def save
+    purchase = Purchase.create(price: price, user_id: user_id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, building: building, purchase_id: purchase.id)
+  end
 end
