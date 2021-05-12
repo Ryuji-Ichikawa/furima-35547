@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :purchase_address do
-    user_id { 1 }
-    postal_code { "200-3000" }
+    postal_code { '200-3000' }
     city{ '東京' }
-    address{ '渋谷' }
+    address{ '渋谷1-1' }
     building { '東京ハイツ' }
-    phone_number{ 12345678900 }
+    phone_number{ "0#{rand(1_000_000_000..9_999_999_999)}" }
     prefecture_id{ 1 }
+    association :user
   end
 end
