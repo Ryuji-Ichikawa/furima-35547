@@ -6,6 +6,8 @@ FactoryBot.define do
     building { '東京ハイツ' }
     phone_number{ "0#{rand(1_000_000_000..9_999_999_999)}" }
     prefecture_id{ 1 }
+    token { 'tok_abcdefghijk00000000000000000' }
+    price { 3000 }
     association :user
   end
 end

@@ -20,6 +20,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.phone_number = '01234567890'
         expect(@purchase_address).to be_valid
       end
+      it "priceとtokenがあれば保存ができること" do
+        @purchase_address.token =  token { 'tok_abcdefghijk00000000000000000' }
+        @purchase_address.price = price { 3000 }
+        expect(@purchase_address).to be_valid
+      end
     end
     context '購入できないとき' do
       it 'postal_codeが空では登録できないこと' do
@@ -71,6 +76,16 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.prefecture_id = 0
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include 'Prefecture is invalid'
+      end
+      it "tokenが空では登録できないこと" do
+        @purchase_address.token = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it "priceが空では保存ができないこと" do
+        @purchase_address.price = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Price can't be blank")
       end
       it 'userが紐付いていないと保存できないこと' do
         @purchase_address.user_id = nil
