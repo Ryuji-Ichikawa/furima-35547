@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe PurchaseAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
-    @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id)
+    item = FactoryBot.create(:item)
+    @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id, item_id: item.id)
+    sleep(0.1)
   end
 
   describe '購入情報登録' do
@@ -23,12 +25,8 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.phone_number = '0412345678'
         expect(@purchase_address).to be_valid
       end
-      it 'priceとtokenがあれば保存ができること' do
-        @purchase_address.token = 'tok_abcdefghijk00000000000000000'
-        @purchase_address.price = 3000
-        expect(@purchase_address).to be_valid
-      end
     end
+
     context '購入できないとき' do
       it 'postal_codeが空では登録できないこと' do
         @purchase_address.postal_code = ''
