@@ -38,6 +38,7 @@ class PurchasesController < ApplicationController
       currency: 'jpy'
     )
   end
+
   def unless_item
     redirect_to root_path if @item.user_id == current_user.id
     redirect_to root_path if @item.purchase.present?
