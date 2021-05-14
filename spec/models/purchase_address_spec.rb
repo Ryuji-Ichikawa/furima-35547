@@ -10,7 +10,6 @@ RSpec.describe PurchaseAddress, type: :model do
   describe '購入情報登録' do
     context '購入できるとき' do
       it '全項目存在すれば登録できる' do
-        binding.pry
         expect(@purchase_address).to be_valid
       end
       it 'postal_codeが3桁-4桁の半角数字であれば登録できる' do
@@ -94,9 +93,9 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include("User can't be blank")
       end
       it 'itemが紐付いていないと保存できないこと' do
-        @purchase_address.user_id = nil
+        @purchase_address.item_id = nil
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("User can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
