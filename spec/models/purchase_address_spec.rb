@@ -10,6 +10,7 @@ RSpec.describe PurchaseAddress, type: :model do
   describe '購入情報登録' do
     context '購入できるとき' do
       it '全項目存在すれば登録できる' do
+        binding.pry
         expect(@purchase_address).to be_valid
       end
       it 'postal_codeが3桁-4桁の半角数字であれば登録できる' do
@@ -21,8 +22,8 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address).to be_valid
       end
       it 'priceとtokenがあれば保存ができること' do
-        @purchase_address.token =  token { 'tok_abcdefghijk00000000000000000' }
-        @purchase_address.price = price { 3000 }
+        @purchase_address.token = 'tok_abcdefghijk00000000000000000'
+        @purchase_address.price = 3000
         expect(@purchase_address).to be_valid
       end
     end
