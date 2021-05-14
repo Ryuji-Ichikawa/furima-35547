@@ -53,7 +53,7 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include "Phone number can't be blank"
       end
-      it 'phone_numberは1英数混合では登録できないこと' do
+      it 'phone_numberは英数混合では登録できないこと' do
         @purchase_address.phone_number = 'a1b25678901'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include 'Phone number is invalid'
