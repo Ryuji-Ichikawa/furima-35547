@@ -9,9 +9,8 @@ class PurchaseAddress
     validates :prefecture_id, numericality: { other_than: 0, message: 'is invalid' }
     validates :city
     validates :address
-    validates :phone_number, format: { with: /\A0[0-9]{10}\z/, message: 'is invalid' }
-    validates :token, presence: true
-    validates :price, presence: true
+    validates :phone_number, format: { with: /\A0[0-9]{1,10}\z/, message: 'is invalid' }
+    validates :token
   end
 
   def save

@@ -4,7 +4,6 @@ RSpec.describe PurchaseAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
     @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id)
-    @purchase_address.item_id = 10
   end
 
   describe '購入情報登録' do
@@ -18,6 +17,10 @@ RSpec.describe PurchaseAddress, type: :model do
       end
       it 'phone_numberが11桁の半角数字であれば登録できる' do
         @purchase_address.phone_number = '01234567890'
+        expect(@purchase_address).to be_valid
+      end
+      it 'phone_numberが10桁以下の半角数字でも登録できる' do
+        @purchase_address.phone_number = '0412345678'
         expect(@purchase_address).to be_valid
       end
       it 'priceとtokenがあれば保存ができること' do
@@ -52,6 +55,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include "Phone number can't be blank"
       end
+      it 'phone_numberは1英数混合では登録できないこと' do
+        @purchase_address.phone_number = 'a1b25678901'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include 'Phone number is invalid'
+      end
       it 'phone_numberは11桁以内の数値のみ登録可能なこと' do
         @purchase_address.phone_number = '012345678901'
         @purchase_address.valid?
@@ -81,11 +89,6 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.token = nil
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
-      end
-      it 'priceが空では保存ができないこと' do
-        @purchase_address.price = nil
-        @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Price can't be blank")
       end
       it 'userが紐付いていないと保存できないこと' do
         @purchase_address.user_id = nil

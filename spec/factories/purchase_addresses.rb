@@ -8,6 +8,6 @@ FactoryBot.define do
     prefecture_id { 1 }
     token { 'tok_abcdefghijk00000000000000000' }
     price { 3000 }
-    association :user
+    item_id { 01 }
   end
 end
