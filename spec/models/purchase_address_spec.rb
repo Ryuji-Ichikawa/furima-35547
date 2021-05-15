@@ -17,6 +17,10 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.postal_code = '200-3000'
         expect(@purchase_address).to be_valid
       end
+      it 'buildingが未記入でも登録できる' do
+        @purchase_address.building = ''
+        expect(@purchase_address).to be_valid
+      end
       it 'phone_numberが11桁の半角数字であれば登録できる' do
         @purchase_address.phone_number = '01234567890'
         expect(@purchase_address).to be_valid
